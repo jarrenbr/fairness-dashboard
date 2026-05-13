@@ -554,7 +554,6 @@ def _render_match_result(match_result: dict[str, object]) -> None:
     with st.container(border=True):
         st.subheader("MATCH Test Result")
         _render_match_interpretation(analytic_result)
-        _render_match_result_cards(analytic_result, simulation_result, str(match_result["method"]))
 
         if int(simulation_result["n"]) < 30:
             st.warning("Small sample warning: metric distributions can be jagged and highly discrete.")
@@ -583,6 +582,7 @@ def _render_match_result(match_result: dict[str, object]) -> None:
             )
         with summary_tab:
             st.dataframe(_match_summary_table(match_result), width="stretch", hide_index=True)
+        _render_match_result_cards(analytic_result, simulation_result, str(match_result["method"]))
 
 
 def _render_match_interpretation(analytic_result: dict[str, object]) -> None:
